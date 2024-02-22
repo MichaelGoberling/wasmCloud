@@ -24,6 +24,10 @@
     "@bytecodealliance/componentize-js": "^0.7.0",
     "@bytecodealliance/jco": "^1.0",
     "@types/node": "^20.10.8",
+    "@types/uuid": "^9.0.8",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "uuid": "^9.0.1"
   }
 }
