@@ -85,11 +85,11 @@ This command will deploy the application to your running wasmcloud host, using [
 To send a request to the running actor (via the HTTP server provider):
 
 ```console
-curl localhost:8081
+curl "localhost:8080/fun/stuff?q=1&p=2"
 ```
 
 > [!NOTE]
-> Confused as to why it is port 8081?
+> Confused as to why it is port 8080?
 >
 > See `typescript-http-hello-world.wadm.yaml` for more information on the pieces of the architecture;
 > actors, providers, and link definitions.
