@@ -7,7 +7,8 @@
     "build:tsc": "tsc",
     "build:component": "jco componentize -w wit -o dist/http-hello-world.wasm dist/http-hello-world.js",
     "build:actor": "wash build --sign-only --config-path wasmcloud.toml",
-    "build": "npm run build:tsc && npm run build:component && npm run build:actor",
+    "bundle": "webpack --config webpack.config.js",
+    "build": "npm run build:tsc && npm run bundle && npm run build:component && npm run build:actor",
     "actor:start": "wash start actor file://$(realpath dist/http_hello_world_s.wasm) --auction-timeout-ms 10000 --timeout-ms 10000",
     "actor:stop": "wash stop actor typescript-http-hello-world",
     "wadm:start": "wash app deploy wadm.yaml",
@@ -25,7 +26,12 @@
     "@bytecodealliance/jco": "^1.0",
     "@types/node": "^20.10.8",
     "@types/uuid": "^9.0.8",
-    "typescript": "^5.3.3"
+    "ts-loader": "^9.5.1",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.2"
   },
   "dependencies": {
     "uuid": "^9.0.1"

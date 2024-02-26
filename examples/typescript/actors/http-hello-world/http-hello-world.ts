@@ -5,7 +5,7 @@ import {
   Fields,
 } from "wasi:http/types@0.2.0";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidV4 } from 'uuid';
 
 // Implementation of wasi-http incoming-handler
 //
@@ -14,13 +14,7 @@ function handle(req: IncomingRequest, resp: ResponseOutparam) {
   // Start building an outgoing response
   const outgoingResponse = new OutgoingResponse(new Fields());
 
-  /**
-   * Comment this out to make the build work again. Currently this errors out with: 
-   *    Import 'uuid' in source.js is not defined as a world import. Only component-defined imports can be used.
-   *    Unable to link the source code. Imports should be:
-   */
-
-  uuidv4();
+  const requestId = uuidV4();
 
   // Access the outgoing response body
   let outgoingBody = outgoingResponse.body();
@@ -28,7 +22,7 @@ function handle(req: IncomingRequest, resp: ResponseOutparam) {
   let outputStream = outgoingBody.write();
   // // Write hello world to the response stream
   outputStream.blockingWriteAndFlush(
-    new Uint8Array(new TextEncoder().encode("Hello from Typescript!\n"))
+    new Uint8Array(new TextEncoder().encode(`Hello from Typescript! RequestId: ${requestId}\n`))
   );
 
   // Set the status code for the response
